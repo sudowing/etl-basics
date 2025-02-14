@@ -122,12 +122,13 @@ REPOS=(
     base_007_mongo
     base_008_snowflake
     base_009_redshift
+    base_010_nodejs
 )
 for REPO in "${REPOS[@]}"
 do
    echo $REPO;
    cd $REPO \
-       && docker build -t $REPO:develop -f ./Dockerfile . \
+       && docker build --network=host -t $REPO:develop -f ./Dockerfile . \
        && docker tag $REPO:develop $REPO:latest \
        && cd ..
 done
