@@ -1,6 +1,6 @@
-FROM node:20-alpine
+FROM node:20-bullseye
 
-RUN apk add --no-cache bash
+RUN apt-get update && apt-get install -y bash && rm -rf /var/lib/apt/lists/*
 
 ENV BASHLOG_JSON=1
 ENV BASHLOG_JSON_PATH='app_json.log'
